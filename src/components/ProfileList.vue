@@ -285,7 +285,7 @@
                         value: 'date_registration'
                     },
                     {
-                        text: 'Actions',
+                        text: 'Acciones',
                         value: 'actions',
                         sortable: false,
                         align: 'center'
@@ -313,10 +313,10 @@
                         });
                         this.show = false;
                         this.nickname = '';
-                        this.text = 'Se han guardado satisfactoriamente los perfiles favoritos';
+                        this.text = 'Se han guardado satisfactoriamente los perfiles de usuarios marcados como favoritos';
                         this.snackbar = true;
                     } else {
-                        this.text = 'No se han marcado perfiles como favoritos';
+                        this.text = 'No se han marcado perfiles de usuarios como favoritos';
                         this.snackbar = true;
                         this.alertIcon = 'mdi-alert-circle';
                         this.alertColor = "error";

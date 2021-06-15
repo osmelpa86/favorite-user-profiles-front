@@ -185,7 +185,7 @@
                         'Fecha de Registro': post.registered.date
                     }));
                 }).catch(e => {
-                    this.text = 'No existen datos asociados a al Nickname :' + ' ' + this.nickname;
+                    this.text = 'No existen datos asociados al Nickname :' + ' ' + this.nickname;
                     this.snackbar = true;
                 });
             },
