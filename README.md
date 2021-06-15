@@ -6,17 +6,19 @@ App vuejs para gestionar perfiles de usuarios favoritos mediante el consumo de l
     ```
     npm install
     ```
+    
 2- Correr el proyecto
     ```
     npm run serve
     ```
+    
 3- Compilar proyecto
     ```
     npm run build
     ```
 
 ## Restricciones del ejercicio
-1- Primeramente deberá importar los perfiles mediante la opción "Cargar datos"
+1- Primeramente deberá importar los perfiles mediante la opción "Cargar datos" (esta opción consume los datos de la API Random User)
 
 ![Screenshot](readme/principal.PNG)
 
@@ -34,19 +36,21 @@ y sobre los datos podrá realizar las siguientes acciones
 
 4- Los perfiles podrán ser marcados como favoritos mediante la opción "Marcar como favorito"
 
-![Screenshot](readme/mark-favorite.PNG)
+![Screenshot](readme/mark-favorite.png)
 
 Luego de marcar uno o varios perfiles como favoritos.
- Al seleccionar "Guardar favoritos en memoria" se consume del microservicio para salvar la lista en memoria con el nickname proporcionado por el usuario.
+ Al seleccionar "Guardar favoritos en memoria" se consume del microservicio para salvar la lista en memoria con el nickname proporcionado por el usuario (se envía el listado al microservicio, quien a su vez lo almacena en memoria).
  
  ![Screenshot](readme/save-list-favorites-microservicio.PNG)
  
-5- Las listas guardadas podrán ser consultadas mediante la opción "Exportar favoritos" 
+5- Las listas guardadas podrán ser consultadas mediante la opción "Exportar favoritos" (esta opción consume del microservicio para obtener la lista de favoritos asociada al nickname proporcionado)
 
 Filtrar por nickaname la lista que desea buscar
+
 ![Screenshot](readme/get-list-byNickname.PNG)
 
-Los perfiles favoritos filtrados podrán ser exportados meidante la opción "Exportar"
+Los perfiles favoritos filtrados podrán ser exportados mediante la opción "Exportar"
+
 ![Screenshot](readme/export.PNG)
 
 6- La app permite seleccionar un perfil y mostrarlo en otra vista
