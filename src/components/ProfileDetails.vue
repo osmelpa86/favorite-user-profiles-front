@@ -23,10 +23,54 @@
         <v-divider/>
 
         <v-row>
-            <v-col cols="6" class="profile-data-column">
-                <v-row style="margin-top: 15px;"
-                       align="center"
-                       justify="center">
+            <v-col cols="9" class="profile-data-column">
+                <!--                <div>-->
+                <!--                    <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true"-->
+                <!--                            data-projection="EPSG:4326" style="height: 400px">-->
+                <!--                        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>-->
+
+                <!--                        <vl-geoloc @update:position="geolocPosition = $event">-->
+                <!--                            <template slot-scope="geoloc">-->
+                <!--                                <vl-feature v-if="geoloc.position" id="position-feature">-->
+                <!--                                    <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>-->
+                <!--                                    <vl-style-box>-->
+                <!--                                        <vl-style-icon src="src/assets/logo.png" :scale="0.4"-->
+                <!--                                                       :anchor="[0.5, 1]"></vl-style-icon>-->
+                <!--                                    </vl-style-box>-->
+                <!--                                </vl-feature>-->
+                <!--                            </template>-->
+                <!--                        </vl-geoloc>-->
+
+                <!--                        <vl-layer-tile id="osm">-->
+                <!--                            <vl-source-osm></vl-source-osm>-->
+                <!--                        </vl-layer-tile>-->
+                <!--                    </vl-map>-->
+                <!--                    <div style="padding: 20px">-->
+                <!--                        Zoom: {{ zoom }}<br>-->
+                <!--                        Center: {{ center }}<br>-->
+                <!--                        Rotation: {{ rotation }}<br>-->
+                <!--                        My geolocation: {{ geolocPosition }}-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+                <div class="map-styles">
+                    <vl-map data-projection="EPSG:4326">
+                        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
+
+                        <vl-layer-tile>
+                            <vl-source-osm></vl-source-osm>
+                        </vl-layer-tile>
+
+                        <vl-feature>
+                            <vl-geom-point :coordinates="[38.726634,9.003391]"></vl-geom-point>
+                        </vl-feature>
+                    </vl-map>
+                </div>
+
+            </v-col>
+
+            <v-col cols="3" class="profile-data-column">
+                <v-row style="margin-top: 15px; margin-left: 10px">
                     <v-img class="rounded-circle"
                            :src="`${this.profile.picture.medium}`"
                            :lazy-src="`${this.profile.picture.medium}`"
@@ -38,7 +82,7 @@
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn v-bind="attrs" style="margin-left: -45px; margin-top: 100px;"
                                    v-on="on"
-                                   color="indigo"
+                                   :color="color"
                                    fab
                                    x-small
                                    @click="mark()">
@@ -51,7 +95,7 @@
                     </v-tooltip>
                 </v-row>
 
-                <div style="margin-left: 15px">
+                <div style="margin-left: 15px; margin-top: 20px">
                     <div>
                         <span class="title-text">Nombre:</span><br/>
                         <span class="title-details">{{this.profile.name.title}} {{this.profile.name.first}} {{this.profile.name.last}}</span>
@@ -88,49 +132,6 @@
                     </div>
                 </div>
             </v-col>
-
-            <v-col cols="6" class="profile-data-column">
-<!--                <div>-->
-<!--                    <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true"-->
-<!--                            data-projection="EPSG:4326" style="height: 400px">-->
-<!--                        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>-->
-
-<!--                        <vl-geoloc @update:position="geolocPosition = $event">-->
-<!--                            <template slot-scope="geoloc">-->
-<!--                                <vl-feature v-if="geoloc.position" id="position-feature">-->
-<!--                                    <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>-->
-<!--                                    <vl-style-box>-->
-<!--                                        <vl-style-icon src="src/assets/logo.png" :scale="0.4"-->
-<!--                                                       :anchor="[0.5, 1]"></vl-style-icon>-->
-<!--                                    </vl-style-box>-->
-<!--                                </vl-feature>-->
-<!--                            </template>-->
-<!--                        </vl-geoloc>-->
-
-<!--                        <vl-layer-tile id="osm">-->
-<!--                            <vl-source-osm></vl-source-osm>-->
-<!--                        </vl-layer-tile>-->
-<!--                    </vl-map>-->
-<!--                    <div style="padding: 20px">-->
-<!--                        Zoom: {{ zoom }}<br>-->
-<!--                        Center: {{ center }}<br>-->
-<!--                        Rotation: {{ rotation }}<br>-->
-<!--                        My geolocation: {{ geolocPosition }}-->
-<!--                    </div>-->
-<!--                </div>-->
-
-                <vl-map data-projection="EPSG:4326" style="height: 400px">
-                    <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
-
-                    <vl-layer-tile>
-                        <vl-source-osm></vl-source-osm>
-                    </vl-layer-tile>
-
-                    <vl-feature>
-                        <vl-geom-point :coordinates="[38.726634,9.003391]"></vl-geom-point>
-                    </vl-feature>
-                </vl-map>
-            </v-col>
         </v-row>
     </v-card>
 </template>
@@ -146,11 +147,12 @@
         data() {
             return {
                 zoom: 2,
-                center: [0,0],
+                center: [0, 0],
                 rotation: 0,
                 geolocPosition: undefined,
                 favoriteText: 'Marcar como favorito',
-                icon: 'mdi-heart-plus'
+                icon: 'mdi-heart-plus',
+                color: 'grey'
             }
         },
         methods: {
@@ -158,18 +160,21 @@
             favoriteIconColor() {
                 this.favoriteText = this.profile.favorite == true ? 'Desmarcar como favorito' : 'Marcar como favorito';
                 this.icon = this.profile.favorite == true ? 'mdi-heart-remove' : 'mdi-heart-plus';
+                this.color = this.profile.favorite == true ? 'indigo' : 'grey';
 
             },
             mark() {
                 this.markOfFavorite(this.profile);
                 this.icon = this.profile.favorite == true ? 'mdi-heart-remove' : 'mdi-heart-plus';
                 this.favoriteText = this.profile.favorite == true ? 'Desmarcar como favorito' : 'Marcar como favorito';
+                this.color = this.profile.favorite == true ? 'indigo' : 'grey';
             }
         },
         mounted() {
             this.favoriteIconColor();
             this.icon = this.profile.favorite == true ? 'mdi-heart-remove' : 'mdi-heart-plus';
             this.favoriteText = this.profile.favorite == true ? 'Desmarcar como favorito' : 'Marcar como favorito';
+            this.color = this.profile.favorite == true ? 'indigo' : 'grey';
         }
     }
 </script>

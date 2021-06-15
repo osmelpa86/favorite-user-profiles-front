@@ -80,7 +80,7 @@
                                v-on="on"
                                color="indigo"
                                @click="markOfFavorite(item)">
-                            <v-icon>{{item.favorite == true ? 'mdi-heart-remove' : 'mdi-heart-plus'}}</v-icon>
+                            <v-icon :color="item.favorite == true ? 'indigo' : 'grey'">{{item.favorite == true ? 'mdi-heart-remove' : 'mdi-heart-plus'}}</v-icon>
                         </v-btn>
                     </template>
                     <span>{{item.favorite == true ? 'Desmarcar como favorito' : 'Marcar como favorito'}}</span>
