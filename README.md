@@ -36,7 +36,7 @@ y sobre los datos podrá realizar las siguientes acciones
 
 4- Los perfiles podrán ser marcados como favoritos mediante la opción "Marcar como favorito"
 
-![Screenshot](readme/mark-favorite.PNG)
+![Screenshot](readme/mark-favorite.png)
 
 Luego de marcar uno o varios perfiles como favoritos.
  Al seleccionar "Guardar favoritos en memoria" se consume del microservicio para salvar la lista en memoria con el nickname proporcionado por el usuario.
