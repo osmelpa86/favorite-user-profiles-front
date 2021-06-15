@@ -46,9 +46,11 @@ Luego de marcar uno o varios perfiles como favoritos.
 5- Las listas guardadas podrán ser consultadas mediante la opción "Exportar favoritos" 
 
 Filtrar por nickaname la lista que desea buscar
+
 ![Screenshot](readme/get-list-byNickname.PNG)
 
-Los perfiles favoritos filtrados podrán ser exportados meidante la opción "Exportar"
+Los perfiles favoritos filtrados podrán ser exportados mediante la opción "Exportar"
+
 ![Screenshot](readme/export.PNG)
 
 6- La app permite seleccionar un perfil y mostrarlo en otra vista
