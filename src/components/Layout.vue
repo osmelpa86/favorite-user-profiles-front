@@ -60,6 +60,7 @@
         methods: {
             ...mapMutations(["loadProfiles"]),
             async readProfiles() {
+                this.profiles = [];
                 await api.getAll()
                     .then(response => {
                         const results = response.data.results

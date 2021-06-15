@@ -327,7 +327,7 @@
             },
         },
         computed: {
-            ...mapState(["profileList", "selectedProfile"]),
+            ...mapState(["profileList"]),
         },
         mounted() {
         }

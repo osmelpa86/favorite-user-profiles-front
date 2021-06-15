@@ -24,35 +24,6 @@
 
         <v-row>
             <v-col cols="9" class="profile-data-column">
-                <!--                <div>-->
-                <!--                    <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true"-->
-                <!--                            data-projection="EPSG:4326" style="height: 400px">-->
-                <!--                        <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>-->
-
-                <!--                        <vl-geoloc @update:position="geolocPosition = $event">-->
-                <!--                            <template slot-scope="geoloc">-->
-                <!--                                <vl-feature v-if="geoloc.position" id="position-feature">-->
-                <!--                                    <vl-geom-point :coordinates="geoloc.position"></vl-geom-point>-->
-                <!--                                    <vl-style-box>-->
-                <!--                                        <vl-style-icon src="src/assets/logo.png" :scale="0.4"-->
-                <!--                                                       :anchor="[0.5, 1]"></vl-style-icon>-->
-                <!--                                    </vl-style-box>-->
-                <!--                                </vl-feature>-->
-                <!--                            </template>-->
-                <!--                        </vl-geoloc>-->
-
-                <!--                        <vl-layer-tile id="osm">-->
-                <!--                            <vl-source-osm></vl-source-osm>-->
-                <!--                        </vl-layer-tile>-->
-                <!--                    </vl-map>-->
-                <!--                    <div style="padding: 20px">-->
-                <!--                        Zoom: {{ zoom }}<br>-->
-                <!--                        Center: {{ center }}<br>-->
-                <!--                        Rotation: {{ rotation }}<br>-->
-                <!--                        My geolocation: {{ geolocPosition }}-->
-                <!--                    </div>-->
-                <!--                </div>-->
-
                 <div class="map-styles">
                     <vl-map data-projection="EPSG:4326">
                         <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
@@ -62,7 +33,7 @@
                         </vl-layer-tile>
 
                         <vl-feature>
-                            <vl-geom-point :coordinates="[38.726634,9.003391]"></vl-geom-point>
+                            <vl-geom-point :coordinates="coordinates"></vl-geom-point>
                         </vl-feature>
                     </vl-map>
                 </div>
@@ -137,12 +108,12 @@
 </template>
 
 <script>
-    import {mapMutations} from "vuex";
+    import {mapMutations, mapState} from "vuex";
 
     export default {
         name: "ProfileDetails",
         props: {
-            profile: null
+            profile: Object
         },
         data() {
             return {
@@ -152,7 +123,8 @@
                 geolocPosition: undefined,
                 favoriteText: 'Marcar como favorito',
                 icon: 'mdi-heart-plus',
-                color: 'grey'
+                color: 'grey',
+                coordinates: []
             }
         },
         methods: {
@@ -175,6 +147,7 @@
             this.icon = this.profile.favorite == true ? 'mdi-heart-remove' : 'mdi-heart-plus';
             this.favoriteText = this.profile.favorite == true ? 'Desmarcar como favorito' : 'Marcar como favorito';
             this.color = this.profile.favorite == true ? 'indigo' : 'grey';
+            this.coordinates = this.this.profile.location.coordinates;
         }
     }
 </script>
