@@ -6,10 +6,12 @@ App vuejs para gestionar perfiles de usuarios favoritos mediante el consumo de l
     ```
     npm install
     ```
+    
 2- Correr el proyecto
     ```
     npm run serve
     ```
+    
 3- Compilar proyecto
     ```
     npm run build
